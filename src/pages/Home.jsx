@@ -289,16 +289,6 @@ export default function Home() {
                                 >
                                     Explore Program
                                 </a>
-                                <a
-                                    href="https://wa.me/62818282817"
-                                    target="_blank"
-                                    className="inline-flex items-center justify-center gap-2 text-xs md:text-sm font-semibold text-white/90 hover:text-white underline-offset-4 hover:underline"
-                                >
-                                    <Phone className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                                    <span className="underline">
-                                        Sudah tahu apa yang diinginkan? <span className="font-bold">Daftar sekarang</span>
-                                    </span>
-                                </a>
                             </div>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-[11px] md:text-xs text-red-50/90">
                                 <div className="inline-flex items-center gap-1.5">
@@ -482,8 +472,7 @@ export default function Home() {
                             Pilih Jalur Program Resmi UTS College
                         </h2>
                         <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                            Empat jalur terstruktur yang menghubungkan lulusan SMA langsung ke University of Technology
-                            Sydney (UTS).
+                            Empat jalur terstruktur yang menghubungkan lulusan SMA langsung ke University of Technology Sydney (UTS). <b>Beasiswa tersedia!</b>
                         </p>
                     </div>
 
@@ -507,6 +496,18 @@ export default function Home() {
                                 </span>
                             </a>
                         ))}
+                    </div>
+
+                    <div className="pt-4 flex justify-center">
+                        <a
+                            href="https://wa.me/62818282817"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center justify-center gap-2 rounded-full bg-green-500 hover:bg-green-600 transition-colors px-6 py-3 text-sm md:text-base font-semibold text-white shadow-md"
+                        >
+                            <Phone className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
+                            <span>Aku mau tahu <b>INFO BEASISWA</b> nya!</span>
+                        </a>
                     </div>
                 </div>
             </section>
