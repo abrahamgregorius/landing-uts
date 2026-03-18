@@ -2,9 +2,15 @@ import { useState, useRef } from 'react';
 import utsVid1 from '../assets/vid/UTS-vid-1.mp4';
 import utsVid3 from '../assets/vid/UTS-vid-3.mp4';
 import utsVid4 from '../assets/vid/UTS-vid-4.mp4';
+import utsVid5 from '../assets/vid/UTS-vid-5.mp4';
 import utsVid6 from '../assets/vid/UTS-vid-6.mp4';
+import utsVid7 from '../assets/vid/UTS-vid-7.mp4';
 import utsVid8 from '../assets/vid/UTS-vid-8.mp4';
+import utsVid9 from '../assets/vid/UTS-vid-9.mp4';
 import logo from '../assets/img/logo.png';
+import testi1 from '../assets/img/testi-1.jpg';
+import testi2 from '../assets/img/testi-2.jpg';
+import testi3 from '../assets/img/testi-3.jpg';
 import {
     Search,
     User,
@@ -28,13 +34,6 @@ import {
     X,
     Clock,
 } from 'lucide-react';
-
-const heroImages = [
-    'https://via.placeholder.com/800x400?text=Hero+Image',
-    'https://via.placeholder.com/400x200?text=Small+1',
-    'https://via.placeholder.com/400x200?text=Small+2',
-    'https://via.placeholder.com/400x200?text=Small+3',
-];
 
 const heroPrograms = [
     {
@@ -122,30 +121,35 @@ const objections = [
     },
 ];
 
+const faqVideos = [utsVid5, utsVid7, utsVid9];
+
 const testimonials = [
     {
-        name: 'Nadia Putri',
-        major: 'UTS Foundation Studies – Business Pathway',
+        name: 'Delsie Darmawan',
+        major: 'UTS – Information Technology',
         rating: 4.8,
         label: 'Testimonial 1',
+        image: testi1,
         quote:
-            'Awalnya saya ragu apakah jalur Foundation itu perlu. Tapi di sini saya justru menemukan ritme belajar yang pas dan dukungan dosen yang sangat personal.',
+            'Waktu kecil aku penasaran tentang coding tapi aku gatau gimana cara belajarnya, pas masuk UTS College jujur lumayan challenging, aku di ajarin untuk cari satu satu problemnya. Tapi di UTS College dosennya sangat sabar, sekarang aku udah mulai bisa bikin teknologi itu sendiri. thank you UTS College karena membantu aku berkembang menjadi pemikir logis dan problem solver',
     },
     {
-        name: 'Rafi Pratama',
-        major: 'Diploma of Engineering',
-        rating: 4.8,
+        name: 'Aurelia',
+        major: 'UTS Foundation Studies',
+        rating: 4.9,
         label: 'Testimonial 2',
+        image: testi2,
         quote:
-            'Transisi dari SMA ke standar universitas Australia terasa jauh lebih mulus. Proyek dan tugasnya sangat relevan dengan dunia kerja teknik sebenarnya.',
+            'Dulu aku takut saat pertama kali pindah dari Indonesia, mulai dari takut sulit berteman sampai urusan menulis esai. Tapi di UTS College, aku belajar berani menyapa dan didukung lingkungan yang sangat praktis. Sekarang, aku bukan cuma punya teman dari seluruh dunia, tapi juga lebih mandiri dan siap mengejar karier sebagai software developer.',
     },
     {
         name: 'Clarissa Tan',
         major: 'Diploma of Information Technology',
         rating: 4.8,
         label: 'Testimonial 3',
+        image: testi3,
         quote:
-            'Saya yang tadinya minder soal kemampuan teknologi, sekarang justru percaya diri karena sudah terbiasa memakai tools dan pendekatan yang dipakai di industri.',
+            'Berawal dari hobi menjahit bareng nenek, aku bermimpi jadi desainer sejak SMP. Meski sempat ragu kuliah di luar negeri, dukungan ayah dan sistem belajar praktis di UTS College membantuku menguasai teknologi desain hingga meraih Outstanding Graduate Prize. Kini di UTS, aku bangga bisa mengubah hobi menjadi jalur karier profesional.',
     },
 ];
 
@@ -397,7 +401,7 @@ export default function Home() {
                             <p className="text-xs md:text-sm text-gray-700 leading-relaxed">
                                 Berbeda dengan ruang kuliah besar yang mengintimidasi, kelas kami berukuran kecil
                                 sehingga setiap anak mendapatkan perhatian penuh dari pengajar untuk memastikan mereka
-                                memahami materi dengan sempurna.
+                                memahami materi dengan sempurna.py
                             </p>
                         </div>
 
@@ -719,32 +723,43 @@ export default function Home() {
                                             {item.question}
                                         </span>
                                         <span
-                                            className={`flex h-7 w-7 items-center justify-center rounded-full border border-gray-300 text-gray-600 transition-all duration-200 ${
-                                                isOpen
-                                                    ? 'rotate-180 bg-gray-900 text-white'
-                                                    : 'bg-gray-50'
-                                            }`}
+                                            className={`flex h-7 w-7 items-center justify-center rounded-full border border-gray-300 text-gray-600 transition-all duration-200 ${isOpen
+                                                ? 'rotate-180 bg-gray-900 text-white'
+                                                : 'bg-gray-50'
+                                                }`}
                                         >
                                             <ChevronDown className="w-4 h-4" aria-hidden="true" />
                                         </span>
                                     </button>
                                     <div
-                                        className={`px-5 pt-0 space-y-3 text-sm md:text-base text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ease-out ${
+                                        className={`px-5 pt-0 text-sm md:text-base text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ease-out ${
                                             isOpen
-                                                ? 'max-h-80 opacity-100 pb-5'
+                                                ? 'max-h-[520px] opacity-100 pb-5'
                                                 : 'max-h-0 opacity-0 pb-0'
                                         }`}
                                     >
-                                        <p>{item.answer}</p>
-                                        <a
-                                            href={item.videoUrl}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="inline-flex items-center gap-2 text-red-600 font-semibold hover:text-red-700"
-                                        >
-                                            <PlayCircle className="w-4 h-4" aria-hidden="true" />
-                                            <span>Lihat jawaban dalam bentuk video</span>
-                                        </a>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 items-start">
+                                            {/* Left: Text answer */}
+                                            <div className="space-y-3">
+                                                <p>{item.answer}</p>
+                                            </div>
+
+                                            {/* Right: Video (reels-style) */}
+                                            <div className="w-full flex justify-center">
+                                                <div
+                                                    className="relative w-full max-w-[220px] sm:max-w-[240px] md:max-w-[260px] overflow-hidden rounded-[32px] shadow-2xl shadow-red-900/30 bg-black border border-gray-900/30"
+                                                    style={{ aspectRatio: '9 / 16' }}
+                                                >
+                                                    <video
+                                                        src={faqVideos[index]}
+                                                        className="w-full h-full object-cover"
+                                                        controls
+                                                        loop
+                                                        playsInline
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             );
@@ -796,7 +811,7 @@ export default function Home() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {testimonials.map((t) => (
+                        {testimonials.map((t, index) => (
                             <div
                                 key={t.label}
                                 className="bg-white border border-gray-200 shadow-sm p-6 flex flex-col justify-between h-full"
@@ -818,17 +833,28 @@ export default function Home() {
                                     </p>
                                 </div>
                                 <div className="mt-6 space-y-2">
-                                    <div>
-                                        <p className="text-sm font-semibold text-gray-900">{t.name}</p>
-                                        <p className="text-xs md:text-sm text-gray-600">{t.major}</p>
+                                    <div className="flex items-center gap-3">
+                                        {(index === 0 || index === 1 || index === 2) && t.image && (
+                                            <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                                                <img
+                                                    src={t.image}
+                                                    alt={t.name}
+                                                    className={`w-full h-full object-cover ${(index === 0) ? 'scale-[1.25] origin-center translate-x-1 translate-y-2' : ''} ${(index === 1) ? 'scale-[2] origin-center -translate-x-1' : ''} ${(index === 2) ? 'scale-[1.75] origin-center translate-y-2 translate-x-5' : ''}`}
+                                                />
+                                            </div>
+                                        )}
+                                        <div>
+                                            <p className="text-sm font-semibold text-gray-900">{t.name}</p>
+                                            <p className="text-xs md:text-sm text-gray-600">{t.major}</p>
+                                        </div>
                                     </div>
-                                    <button
+                                    {/* <button
                                         type="button"
                                         className="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-700"
                                     >
                                         <span>{t.label}</span>
                                         <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         ))}
