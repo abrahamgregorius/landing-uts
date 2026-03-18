@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import utsVid1 from '../assets/vid/UTS-vid-1.mp4';
+import utsVid3 from '../assets/vid/UTS-vid-3.mp4';
 import logo from '../assets/img/logo.png';
 import {
     Search,
@@ -156,6 +158,8 @@ const navLinks = [
 export default function Home() {
     const [openObjectionIndex, setOpenObjectionIndex] = useState(0);
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
+    const parentVideoRef = useRef(null);
+    const [parentVideoStarted, setParentVideoStarted] = useState(false);
 
     return (
         <div className="font-sans bg-white text-gray-900">
@@ -170,7 +174,7 @@ export default function Home() {
                         <img
                             src={logo}
                             alt="UTS College"
-                            className="h-40 md:h-45 w-auto object-contain"
+                            className="h-40 md:h-50 w-auto object-contain"
                         />
                     </a>
 
@@ -243,9 +247,9 @@ export default function Home() {
                     <div className="absolute -bottom-40 -left-10 h-80 w-80 rounded-full bg-orange-400 blur-3xl" />
                 </div>
 
-                <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-24 lg:py-28 grid grid-cols-1 lg:grid-cols-[1.15fr,0.95fr] gap-14 lg:gap-16 items-center">
+                <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-24 lg:py-28 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.15fr,0.95fr] gap-10 lg:gap-16 items-center">
                     {/* Left: Value proposition & CTA */}
-                    <div className="flex flex-col gap-6 md:gap-8">
+                    <div className="flex flex-col gap-6 md:gap-7 lg:gap-8">
                         <div className="inline-flex w-fit self-start items-center gap-2 rounded-full bg-white/10 px-3 py-1 shadow-sm backdrop-blur-sm border border-white/15">
                             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-red-600 text-[10px] font-extrabold">
                                 UTS
@@ -255,8 +259,8 @@ export default function Home() {
                             </span>
                         </div>
 
-                        <div className="space-y-5 md:space-y-6">
-                            <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-extrabold tracking-tight leading-tight md:leading-tight">
+                        <div className="space-y-4 md:space-y-6">
+                            <h1 className="text-3xl md:text-5xl lg:text-[3.1rem] font-extrabold tracking-tight leading-tight md:leading-tight">
                                 Jaminan jalur masuk ke Universitas Top 100 dunia.
                             </h1>
                             <p className="text-sm md:text-lg lg:text-xl font-medium leading-relaxed text-red-50/95 max-w-xl">
@@ -265,7 +269,7 @@ export default function Home() {
                             </p>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-4 md:space-y-5">
                             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                                 <a
                                     href="#programs"
@@ -279,7 +283,7 @@ export default function Home() {
                                     className="inline-flex items-center justify-center gap-2 text-xs md:text-sm font-semibold text-white/90 hover:text-white underline-offset-4 hover:underline"
                                 >
                                     <Phone className="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" />
-                                    <span>
+                                    <span className="underline">
                                         Sudah tahu apa yang diinginkan? <span className="font-bold">Daftar sekarang</span>
                                     </span>
                                 </a>
@@ -300,52 +304,24 @@ export default function Home() {
                     {/* Right: Hero visual with video + mini stats */}
                     <div className="flex flex-col gap-4 md:gap-5">
                         <div
-                            className="relative mx-auto w-full max-w-[320px] sm:max-w-[360px] overflow-hidden rounded-[32px] bg-gradient-to-br from-red-900 via-red-800 to-red-700 shadow-2xl shadow-red-950/60 border border-red-400/40"
+                            className="relative mx-auto w-full max-w-[320px] sm:max-w-[360px] overflow-hidden rounded-[32px] bg-black shadow-2xl shadow-red-950/60 border border-red-400/40"
                             style={{ aspectRatio: '9 / 16' }}
                         >
-                            <div className="absolute inset-x-4 top-4 flex items-center justify-between gap-3 text-[11px] md:text-xs text-red-50/90">
-                                <div className="inline-flex items-center gap-2 bg-black/20 px-3 py-1 rounded-full border border-white/15">
+                            <div className="absolute inset-x-4 top-4 flex items-start justify-start text-[11px] md:text-xs text-red-50/90">
+                                <div className="inline-flex items-center gap-2 bg-black/25 px-3 py-1 rounded-full border border-white/15">
                                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-                                    <span className="font-semibold tracking-wide">Modern City Campus • Sydney CBD</span>
-                                </div>
-                                <div className="hidden sm:inline-flex items-center gap-1.5 bg-black/15 px-2.5 py-1 rounded-full border border-white/10">
-                                    <Star className="w-3.5 h-3.5 text-yellow-300" aria-hidden="true" />
-                                    <span className="font-semibold">Top 100 World University</span>
+                                    <span className="font-semibold tracking-wide">Modern City Campus • Sydney</span>
                                 </div>
                             </div>
 
-                            <img
-                                src={heroImages[0]}
-                                alt="Kampus UTS College di Sydney"
-                                className="w-full h-full object-cover opacity-85"
+                            <video
+                                src={utsVid1}
+                                className="w-full h-full object-cover"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
                             />
-
-                            <a
-                                href="https://drive.google.com/file/d/16QIOL-dK0-KXJ-gY83c0hUT_JI5xtjOV/view?usp=drive_link"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="absolute inset-0 flex flex-col items-center justify-center bg-black/35 hover:bg-black/45 transition-colors"
-                            >
-                                <PlayCircle className="w-16 h-16 md:w-18 md:h-18 text-white drop-shadow-lg mb-2" aria-hidden="true" />
-                                <span className="text-white font-semibold text-xs md:text-sm text-center px-4">
-                                    Tonton 60 detik perjalanan siswa menuju UTS
-                                </span>
-                            </a>
-
-                            <div className="absolute inset-x-4 bottom-4 grid grid-cols-2 gap-3 text-[11px] md:text-xs text-red-50">
-                                <div className="bg-black/35 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/10 flex flex-col gap-0.5">
-                                    <span className="font-semibold tracking-wide">90% Diploma Progression</span>
-                                    <span className="text-[10px] md:text-[11px] text-red-100/80">
-                                        Lulusan Diploma melanjutkan ke tahun kedua UTS dengan kepercayaan diri tinggi.
-                                    </span>
-                                </div>
-                                <div className="bg-black/35 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/10 flex flex-col gap-0.5">
-                                    <span className="font-semibold tracking-wide">Kelas kecil &amp; suportif</span>
-                                    <span className="text-[10px] md:text-[11px] text-red-100/80">
-                                        Pendampingan personal dan lingkungan belajar yang aman bagi siswa internasional.
-                                    </span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -526,7 +502,7 @@ export default function Home() {
             {/* Section 2: Problem Agitation */}
             <section
                 id="problems"
-                className="max-w-7xl mx-auto px-4 py-24 md:py-28 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                className="max-w-7xl mx-auto px-4 py-20 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center"
                 data-aos="fade-up"
                 data-aos-delay="120"
                 style={{ scrollMarginTop: '5rem' }}
@@ -534,15 +510,15 @@ export default function Home() {
                 {/* Left: Text & Pain Points */}
                 <div className="space-y-8">
                     <div>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-gray-900">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight mb-3 text-gray-900">
                             Merasa Familiar dengan Kekhawatiran Ini?
                         </h2>
-                        <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed">
+                        <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed">
                             Ribuan orang tua merasakan keraguan yang sama saat menentukan masa depan kuliah anak mereka.
                             Anda tidak sendirian dalam memikirkan hal ini.
                         </p>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-3.5">
                         {painPoints.map((text, index) => (
                             <div
                                 key={text}
@@ -563,22 +539,33 @@ export default function Home() {
                         className="relative w-full max-w-[260px] sm:max-w-[280px] md:max-w-[320px] overflow-hidden shadow-2xl shadow-red-900/40 bg-black border border-gray-900/30 rounded-[32px]"
                         style={{ aspectRatio: '9 / 16' }}
                     >
-                        <img
-                            src="https://via.placeholder.com/800x450?text=Parent+Stories+Video"
-                            alt="Parent video placeholder"
+                        <video
+                            ref={parentVideoRef}
+                            src={utsVid3}
                             className="w-full h-full object-cover"
+                            muted={!parentVideoStarted}
+                            loop
+                            controls
+                            playsInline
                         />
-                        <a
-                            href="https://drive.google.com/file/d/1DPPtpBREgA-ysSq_54uvflUkSmR37E_I/view?usp=drive_link"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="absolute inset-0 flex flex-col items-center justify-center bg-black/45 hover:bg-black/60 transition-colors"
-                        >
-                            <PlayCircle className="w-14 h-14 text-white mb-2" aria-hidden="true" />
-                            <span className="text-white font-semibold text-sm md:text-base text-center px-4">
-                                Lihat bagaimana orang tua lain menjawab kekhawatiran mereka
-                            </span>
-                        </a>
+                        {!parentVideoStarted && (
+                            <button
+                                type="button"
+                                className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 hover:bg-black/50 transition-colors"
+                                onClick={() => {
+                                    if (parentVideoRef.current) {
+                                        parentVideoRef.current.muted = false;
+                                        parentVideoRef.current.play();
+                                    }
+                                    setParentVideoStarted(true);
+                                }}
+                            >
+                                <PlayCircle className="w-14 h-14 text-white mb-2" aria-hidden="true" />
+                                <span className="text-white font-semibold text-sm md:text-base text-center px-4">
+                                    Tonton video singkat
+                                </span>
+                            </button>
+                        )}
                     </div>
                 </div>
             </section>
@@ -586,26 +573,26 @@ export default function Home() {
             {/* Section 3: Solution / Value Proposition */}
             <section
                 id="solution"
-                className="max-w-7xl mx-auto px-4 pt-10 pb-28 md:pt-16 md:pb-32 space-y-10"
+                className="max-w-7xl mx-auto px-4 pt-10 pb-24 md:pt-16 md:pb-28 space-y-10"
                 data-aos="fade-up"
                 data-aos-delay="160"
                 style={{ scrollMarginTop: '5rem' }}
             >
                 <div className="max-w-3xl text-center mx-auto space-y-4">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900">
                         Kami Membangun Kampus di Mana Setiap Siswa Menemukan Tempatnya
                     </h2>
-                    <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed">
+                    <p className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed">
                         Baik putra-putri Anda seorang petualang, pemikir tenang (introvert), pecinta teknologi,
                         atau bahkan masih mencari jati diri — UTS dirancang khusus untuk mendukung siapapun mereka.
                     </p>
                 </div>
 
-                <div className="space-y-10">
+                <div className="space-y-8 md:space-y-10">
                     {valuePillars.map((pillar, index) => (
                         <div
                             key={pillar.title}
-                            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+                            className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 items-center"
                         >
                             {/* Text side */}
                             <div className="space-y-4">
@@ -649,7 +636,7 @@ export default function Home() {
                                     >
                                         <PlayCircle className="w-12 h-12 text-white mb-2" aria-hidden="true" />
                                         <span className="text-white font-semibold text-xs md:text-sm text-center px-4">
-                                            Tonton penjelasan singkat tentang {pillar.title.toLowerCase()}
+                                            Tonton video singkat
                                         </span>
                                     </a>
                                 </div>
@@ -675,7 +662,7 @@ export default function Home() {
                                 <HelpCircle className="w-5 h-5" aria-hidden="true" />
                             </span>
                             <span className="text-sm font-semibold uppercase tracking-widest text-blue-800">
-                                Objection Handling
+                                Frequently Asked Question
                             </span>
                         </div>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
