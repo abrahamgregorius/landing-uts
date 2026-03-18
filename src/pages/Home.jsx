@@ -1,5 +1,26 @@
 import { useState } from 'react';
-import { Search, User, PlayCircle, BookOpen, GraduationCap, Layers3, FileText, ArrowUpRight, Brain, Sparkles, Laptop2, HelpCircle, ChevronDown, Star, Phone, MessageCircle, ShieldCheck, CheckCircle2, Menu, X } from 'lucide-react';
+import {
+    Search,
+    User,
+    PlayCircle,
+    BookOpen,
+    GraduationCap,
+    Layers3,
+    FileText,
+    ArrowUpRight,
+    Brain,
+    Sparkles,
+    Laptop2,
+    HelpCircle,
+    ChevronDown,
+    Star,
+    Phone,
+    MessageCircle,
+    ShieldCheck,
+    CheckCircle2,
+    Menu,
+    X,
+} from 'lucide-react';
 
 const heroImages = [
     'https://via.placeholder.com/800x400?text=Hero+Image',
@@ -139,8 +160,14 @@ export default function Home() {
             {/* Sticky Navigation */}
             <nav className="sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 md:h-20">
-                    <a href="#hero" className="flex items-center gap-3" onClick={() => setMobileNavOpen(false)}>
-                        <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-red-600">UTS College</span>
+                    <a
+                        href="#hero"
+                        className="flex items-center gap-3"
+                        onClick={() => setMobileNavOpen(false)}
+                    >
+                        <span className="text-2xl md:text-3xl font-extrabold tracking-tight text-red-600">
+                            UTS College
+                        </span>
                     </a>
 
                     {/* Desktop navigation */}
@@ -160,17 +187,15 @@ export default function Home() {
                         >
                             Konsultasi Gratis
                         </a>
-                        <button className="p-2 text-gray-500 hover:text-red-600">
-                            <Search className="w-5 h-5" aria-hidden="true" />
-                        </button>
-                        <button className="p-2 text-gray-500 hover:text-red-600">
-                            <User className="w-5 h-5" aria-hidden="true" />
-                        </button>
                     </div>
 
                     {/* Mobile toggle */}
                     <div className="md:hidden flex items-center gap-2">
-                        <button className="p-2 text-gray-600 hover:text-red-600" aria-label="Toggle navigation" onClick={() => setMobileNavOpen((prev) => !prev)}>
+                        <button
+                            className="p-2 text-gray-600 hover:text-red-600"
+                            aria-label="Toggle navigation"
+                            onClick={() => setMobileNavOpen((prev) => !prev)}
+                        >
                             {mobileNavOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </button>
                     </div>
@@ -207,8 +232,9 @@ export default function Home() {
                 id="hero"
                 className="bg-red-600 text-white"
                 data-aos="fade-up"
+                style={{ scrollMarginTop: '5rem' }}
             >
-                <div className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="max-w-7xl mx-auto px-4 py-24 md:py-28 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left: Text & Programs */}
                     <div className="p-0 md:pr-4 flex flex-col justify-between h-full space-y-10">
                         <div>
@@ -254,7 +280,10 @@ export default function Home() {
 
                     {/* Right: Video highlight inside red hero */}
                     <div className="flex flex-col gap-6">
-                        <div className="relative w-full overflow-hidden shadow-2xl border border-red-400/40 bg-red-700/40" style={{ borderRadius: 0 }}>
+                        <div
+                            className="relative w-full overflow-hidden shadow-2xl border border-red-400/40 bg-red-700/40"
+                            style={{ borderRadius: 0 }}
+                        >
                             <img
                                 src={heroImages[0]}
                                 alt="Hero"
@@ -280,12 +309,14 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
             {/* Section 2: Problem Agitation */}
             <section
                 id="problems"
-                className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                className="max-w-7xl mx-auto px-4 py-24 md:py-28 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
                 data-aos="fade-up"
                 data-aos-delay="120"
+                style={{ scrollMarginTop: '5rem' }}
             >
                 {/* Left: Text & Pain Points */}
                 <div className="space-y-8">
@@ -340,9 +371,10 @@ export default function Home() {
             {/* Section 3: Solution / Value Proposition */}
             <section
                 id="solution"
-                className="max-w-7xl mx-auto px-4 pb-24 pt-4 space-y-10"
+                className="max-w-7xl mx-auto px-4 pt-10 pb-28 md:pt-16 md:pb-32 space-y-10"
                 data-aos="fade-up"
                 data-aos-delay="160"
+                style={{ scrollMarginTop: '5rem' }}
             >
                 <div className="max-w-3xl text-center mx-auto space-y-4">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
@@ -363,11 +395,16 @@ export default function Home() {
                             {/* Text side */}
                             <div className="space-y-4">
                                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-red-50 border border-red-100">
-                                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 text-red-700" aria-hidden="true">
+                                    <span
+                                        className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 text-red-700"
+                                        aria-hidden="true"
+                                    >
                                         <pillar.icon className="w-5 h-5" />
                                     </span>
                                     <span className="text-sm font-semibold uppercase tracking-widest text-red-700">
-                                        Value Proposition
+                                        {index === 0 && 'Bimbingan Pilihan Jurusan yang Tepat'}
+                                        {index === 1 && 'Pengalaman Belajar yang Nyaman'}
+                                        {index === 2 && 'Fasilitas & Teknologi Standar Industri'}
                                     </span>
                                 </div>
                                 <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900">
@@ -406,9 +443,10 @@ export default function Home() {
             {/* Section 4: Objection Handling */}
             <section
                 id="objections"
-                className="max-w-7xl mx-auto px-4 pb-28 pt-4 grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-16 items-start"
+                className="max-w-7xl mx-auto px-4 pt-10 pb-32 md:pt-16 md:pb-36 grid grid-cols-1 lg:grid-cols-[1.2fr,0.8fr] gap-16 items-start"
                 data-aos="fade-up"
                 data-aos-delay="190"
+                style={{ scrollMarginTop: '5rem' }}
             >
                 {/* Left: Accordion */}
                 <div className="space-y-8">
@@ -450,7 +488,9 @@ export default function Home() {
                                         </span>
                                         <span
                                             className={`flex h-7 w-7 items-center justify-center rounded-full border border-gray-300 text-gray-600 transition-all duration-200 ${
-                                                isOpen ? 'rotate-180 bg-gray-900 text-white' : 'bg-gray-50'
+                                                isOpen
+                                                    ? 'rotate-180 bg-gray-900 text-white'
+                                                    : 'bg-gray-50'
                                             }`}
                                         >
                                             <ChevronDown className="w-4 h-4" aria-hidden="true" />
@@ -458,7 +498,9 @@ export default function Home() {
                                     </button>
                                     <div
                                         className={`px-5 pt-0 space-y-3 text-sm md:text-base text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ease-out ${
-                                            isOpen ? 'max-h-80 opacity-100 pb-5' : 'max-h-0 opacity-0 pb-0'
+                                            isOpen
+                                                ? 'max-h-80 opacity-100 pb-5'
+                                                : 'max-h-0 opacity-0 pb-0'
                                         }`}
                                     >
                                         <p>{item.answer}</p>
@@ -478,7 +520,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Right: Supporting visual */}
+                {/* Right: Supporting visual (optional, currently commented out) */}
                 {/* <div className="w-full h-full flex items-center">
                     <div className="w-full relative overflow-hidden shadow-2xl" style={{ borderRadius: 0 }}>
                         <img
@@ -507,8 +549,9 @@ export default function Home() {
                 className="bg-gray-50 border-t border-gray-200"
                 data-aos="fade-up"
                 data-aos-delay="220"
+                style={{ scrollMarginTop: '5rem' }}
             >
-                <div className="max-w-7xl mx-auto px-4 py-20 space-y-10">
+                <div className="max-w-7xl mx-auto px-4 py-24 md:py-28 space-y-10">
                     <div className="max-w-3xl text-center mx-auto space-y-4">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
                             Dari keraguan menuju kesuksesan: Testimoni siswa kami
@@ -567,7 +610,8 @@ export default function Home() {
                             <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center gap-2 md:gap-3">
                                 <span className="text-4xl md:text-5xl font-extrabold text-gray-900">92%</span>
                                 <span className="text-sm md:text-base text-gray-700 max-w-sm">
-                                    alumni melaporkan sudah bekerja atau melanjutkan studi dalam 6 bulan setelah lulus.
+                                    alumni melaporkan sudah bekerja atau melanjutkan studi dalam 6 bulan setelah
+                                    lulus.
                                 </span>
                             </div>
                         </div>
@@ -584,8 +628,9 @@ export default function Home() {
                 className="bg-gray-900 text-white"
                 data-aos="fade-up"
                 data-aos-delay="260"
+                style={{ scrollMarginTop: '5rem' }}
             >
-                <div className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+                <div className="max-w-7xl mx-auto px-4 py-24 md:py-28 grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
                     {/* Left: Copy & reassurance */}
                     <div className="space-y-8">
                         <div className="space-y-4">
