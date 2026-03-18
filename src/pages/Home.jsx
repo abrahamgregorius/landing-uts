@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react';
 import utsVid1 from '../assets/vid/UTS-vid-1.mp4';
 import utsVid3 from '../assets/vid/UTS-vid-3.mp4';
+import utsVid4 from '../assets/vid/UTS-vid-4.mp4';
+import utsVid6 from '../assets/vid/UTS-vid-6.mp4';
+import utsVid8 from '../assets/vid/UTS-vid-8.mp4';
 import logo from '../assets/img/logo.png';
 import {
     Search,
@@ -160,6 +163,11 @@ export default function Home() {
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
     const parentVideoRef = useRef(null);
     const [parentVideoStarted, setParentVideoStarted] = useState(false);
+    const solutionVideoRefs = useRef([]);
+    const [solutionVideoStarted, setSolutionVideoStarted] = useState(() =>
+        Array(valuePillars.length).fill(false)
+    );
+    const solutionVideos = [utsVid4, utsVid6, utsVid8];
 
     return (
         <div className="font-sans bg-white text-gray-900">
@@ -318,8 +326,8 @@ export default function Home() {
                                 src={utsVid1}
                                 className="w-full h-full object-cover"
                                 autoPlay
-                                muted
                                 loop
+                                controls
                                 playsInline
                             />
                         </div>
@@ -623,22 +631,40 @@ export default function Home() {
                                     className="relative w-full max-w-[240px] sm:max-w-[260px] md:max-w-[300px] overflow-hidden rounded-[32px] shadow-2xl shadow-red-900/40 bg-black border border-gray-900/30"
                                     style={{ aspectRatio: '9 / 16' }}
                                 >
-                                    <img
-                                        src={pillar.placeholder}
-                                        alt={pillar.title}
+                                    <video
+                                        ref={(el) => {
+                                            solutionVideoRefs.current[index] = el;
+                                        }}
+                                        src={solutionVideos[index]}
                                         className="w-full h-full object-cover"
+                                        muted
+                                        loop
+                                        controls
+                                        playsInline
                                     />
-                                    <a
-                                        href={pillar.videoUrl}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="absolute inset-0 flex flex-col items-center justify-center bg-black/45 hover:bg-black/60 transition-colors"
-                                    >
-                                        <PlayCircle className="w-12 h-12 text-white mb-2" aria-hidden="true" />
-                                        <span className="text-white font-semibold text-xs md:text-sm text-center px-4">
-                                            Tonton video singkat
-                                        </span>
-                                    </a>
+                                    {!solutionVideoStarted[index] && (
+                                        <button
+                                            type="button"
+                                            className="absolute inset-0 flex flex-col items-center justify-center bg-black/35 hover:bg-black/45 transition-colors"
+                                            onClick={() => {
+                                                const videoEl = solutionVideoRefs.current[index];
+                                                if (videoEl) {
+                                                    videoEl.muted = false;
+                                                    videoEl.play();
+                                                }
+                                                setSolutionVideoStarted((prev) => {
+                                                    const next = [...prev];
+                                                    next[index] = true;
+                                                    return next;
+                                                });
+                                            }}
+                                        >
+                                            <PlayCircle className="w-12 h-12 text-white mb-2" aria-hidden="true" />
+                                            <span className="text-white font-semibold text-xs md:text-sm text-center px-4">
+                                                Tonton video singkat
+                                            </span>
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
