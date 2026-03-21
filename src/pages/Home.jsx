@@ -8,6 +8,14 @@ import utsVid7 from '../assets/vid/UTS-vid-7.mp4';
 import utsVid8 from '../assets/vid/UTS-vid-8.mp4';
 import utsVid9 from '../assets/vid/UTS-vid-9.mp4';
 import logo from '../assets/img/logo.png';
+import coverUts1 from '../assets/img/Cover-UTS-1.png';
+import coverUts3 from '../assets/img/Cover-UTS-3.png';
+import coverUts4 from '../assets/img/Cover-UTS-4.png';
+import coverUts5 from '../assets/img/Cover-UTS-5.png';
+import coverUts6 from '../assets/img/Cover-UTS-6.png';
+import coverUts7 from '../assets/img/Cover-UTS-7.png';
+import coverUts8 from '../assets/img/Cover-UTS-8.png';
+import coverUts9 from '../assets/img/Cover-UTS-9.png';
 import testi1 from '../assets/img/testi-1.jpg';
 import testi2 from '../assets/img/testi-2.jpg';
 import testi3 from '../assets/img/testi-3.jpg';
@@ -123,6 +131,7 @@ const objections = [
 ];
 
 const faqVideos = [utsVid5, utsVid7, utsVid9];
+const faqVideoCovers = [coverUts5, coverUts7, coverUts9];
 
 const testimonials = [
     {
@@ -182,6 +191,7 @@ export default function Home() {
         Array(valuePillars.length).fill(false)
     );
     const solutionVideos = [utsVid4, utsVid6, utsVid8];
+    const solutionVideoCovers = [coverUts4, coverUts6, coverUts8];
 
     const handleLeadChange = (event) => {
         const { name, value } = event.target;
@@ -364,6 +374,7 @@ export default function Home() {
 
                             <video
                                 src={utsVid1}
+                                poster={coverUts1}
                                 className="w-full h-full object-cover"
                                 autoPlay
                                 loop
@@ -601,6 +612,7 @@ export default function Home() {
                         <video
                             ref={parentVideoRef}
                             src={utsVid3}
+                            poster={coverUts3}
                             className="w-full h-full object-cover"
                             muted={!parentVideoStarted}
                             loop
@@ -687,6 +699,7 @@ export default function Home() {
                                             solutionVideoRefs.current[index] = el;
                                         }}
                                         src={solutionVideos[index]}
+                                        poster={solutionVideoCovers[index]}
                                         className="w-full h-full object-cover"
                                         muted
                                         loop
@@ -799,6 +812,7 @@ export default function Home() {
                                                 >
                                                     <video
                                                         src={faqVideos[index]}
+                                                        poster={faqVideoCovers[index]}
                                                         className="w-full h-full object-cover"
                                                         controls
                                                         loop
