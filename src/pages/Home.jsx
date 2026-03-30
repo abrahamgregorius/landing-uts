@@ -8,6 +8,14 @@ import utsVid7 from '../assets/vid/UTS-vid-7.mp4';
 import utsVid8 from '../assets/vid/UTS-vid-8.mp4';
 import utsVid9 from '../assets/vid/UTS-vid-9.mp4';
 import logo from '../assets/img/logo.png';
+import coverUts1 from '../assets/img/Cover-UTS-1.png';
+import coverUts3 from '../assets/img/Cover-UTS-3.png';
+import coverUts4 from '../assets/img/Cover-UTS-4.png';
+import coverUts5 from '../assets/img/Cover-UTS-5.png';
+import coverUts6 from '../assets/img/Cover-UTS-6.png';
+import coverUts7 from '../assets/img/Cover-UTS-7.png';
+import coverUts8 from '../assets/img/Cover-UTS-8.png';
+import coverUts9 from '../assets/img/Cover-UTS-9.png';
 import testi1 from '../assets/img/testi-1.jpg';
 import testi2 from '../assets/img/testi-2.jpg';
 import testi3 from '../assets/img/testi-3.jpg';
@@ -34,6 +42,7 @@ import {
     X,
     Clock,
 } from 'lucide-react';
+import { submitCtaLead } from '../lib/ctaLeadQuery';
 
 const heroPrograms = [
     {
@@ -122,6 +131,7 @@ const objections = [
 ];
 
 const faqVideos = [utsVid5, utsVid7, utsVid9];
+const faqVideoCovers = [coverUts5, coverUts7, coverUts9];
 
 const testimonials = [
     {
@@ -165,6 +175,15 @@ const navLinks = [
 export default function Home() {
     const [openObjectionIndex, setOpenObjectionIndex] = useState(0);
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
+    const [leadForm, setLeadForm] = useState({
+        nama: '',
+        email: '',
+        nomorWhatsapp: '',
+        programDiminati: '',
+        sumberInformasi: '',
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formStatus, setFormStatus] = useState({ type: 'idle', message: '' });
     const parentVideoRef = useRef(null);
     const [parentVideoStarted, setParentVideoStarted] = useState(false);
     const solutionVideoRefs = useRef([]);
@@ -172,6 +191,43 @@ export default function Home() {
         Array(valuePillars.length).fill(false)
     );
     const solutionVideos = [utsVid4, utsVid6, utsVid8];
+    const solutionVideoCovers = [coverUts4, coverUts6, coverUts8];
+
+    const handleLeadChange = (event) => {
+        const { name, value } = event.target;
+        setLeadForm((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleLeadSubmit = async (event) => {
+        event.preventDefault();
+        setIsSubmitting(true);
+        setFormStatus({ type: 'idle', message: '' });
+
+        try {
+            await submitCtaLead(leadForm);
+            setFormStatus({
+                type: 'success',
+                message: 'Data berhasil dikirim. Tim kami akan segera menghubungi Anda.',
+            });
+            setLeadForm({
+                nama: '',
+                email: '',
+                nomorWhatsapp: '',
+                programDiminati: '',
+                sumberInformasi: '',
+            });
+        } catch (error) {
+            setFormStatus({
+                type: 'error',
+                message: error.message || 'Terjadi kendala saat mengirim data. Silakan coba lagi.',
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <div className="font-sans bg-white text-gray-900">
@@ -317,6 +373,7 @@ export default function Home() {
 
                             <video
                                 src={utsVid1}
+                                poster={coverUts1}
                                 className="w-full h-full object-cover"
                                 autoPlay
                                 loop
@@ -554,6 +611,7 @@ export default function Home() {
                         <video
                             ref={parentVideoRef}
                             src={utsVid3}
+                            poster={coverUts3}
                             className="w-full h-full object-cover"
                             muted={!parentVideoStarted}
                             loop
@@ -640,6 +698,7 @@ export default function Home() {
                                             solutionVideoRefs.current[index] = el;
                                         }}
                                         src={solutionVideos[index]}
+                                        poster={solutionVideoCovers[index]}
                                         className="w-full h-full object-cover"
                                         muted
                                         loop
@@ -751,6 +810,7 @@ export default function Home() {
                                                 >
                                                     <video
                                                         src={faqVideos[index]}
+                                                        poster={faqVideoCovers[index]}
                                                         className="w-full h-full object-cover"
                                                         controls
                                                         loop
@@ -895,7 +955,7 @@ export default function Home() {
                                 Langkah berikutnya
                             </span>
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
-                                Masa depan cerah anak anda, dimulai hari ini
+                                Masa depan cerah anak Anda, dimulai hari ini
                             </h2>
                             <p className="text-base md:text-lg text-gray-200 leading-relaxed max-w-xl">
                                 Pendaftaran telah dibuka dan kuota program sangat terbatas. Jangan biarkan keraguan
@@ -935,7 +995,7 @@ export default function Home() {
                                 <div>
                                     <p className="font-semibold">Jaminan privasi</p>
                                     <p className="text-gray-300 text-xs md:text-sm">
-                                        Data anda 100% aman dan tidak akan pernah disalahgunakan.
+                                        Data Anda 100% aman dan tidak akan pernah disalahgunakan.
                                     </p>
                                 </div>
                             </div>
@@ -957,7 +1017,7 @@ export default function Home() {
                                 <div>
                                     <p className="font-semibold">Tanpa paksaan</p>
                                     <p className="text-gray-300 text-xs md:text-sm">
-                                        Tidak ada komitmen apapun – hanya diskusi santai untuk masa depan anak anda.
+                                        Tidak ada komitmen apapun – hanya diskusi santai untuk masa depan anak Anda.
                                     </p>
                                 </div>
                             </div>
@@ -969,52 +1029,63 @@ export default function Home() {
                         <h3 className="text-lg md:text-xl font-extrabold mb-4">Isi data singkat untuk mulai konsultasi</h3>
                         <form
                             className="space-y-4 text-sm md:text-base"
-                            onSubmit={(e) => e.preventDefault()}
+                            onSubmit={handleLeadSubmit}
                         >
                             <div className="space-y-1">
                                 <label className="font-semibold" htmlFor="lead-name">
-                                    Nama
+                                    Nama Lengkap
                                 </label>
                                 <input
                                     id="lead-name"
+                                    name="nama"
                                     type="text"
                                     required
+                                    value={leadForm.nama}
+                                    onChange={handleLeadChange}
                                     className="w-full border border-gray-300 px-3 py-2 text-sm rounded-none focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-gray-900"
                                     placeholder="Nama lengkap orang tua atau siswa"
                                 />
                             </div>
                             <div className="space-y-1">
                                 <label className="font-semibold" htmlFor="lead-email">
-                                    Email
+                                    Email Aktif
                                 </label>
                                 <input
                                     id="lead-email"
+                                    name="email"
                                     type="email"
                                     required
+                                    value={leadForm.email}
+                                    onChange={handleLeadChange}
                                     className="w-full border border-gray-300 px-3 py-2 text-sm rounded-none focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-gray-900"
                                     placeholder="nama@email.com"
                                 />
                             </div>
                             <div className="space-y-1">
                                 <label className="font-semibold" htmlFor="lead-wa">
-                                    WA number
+                                    Nomor WhatsApp
                                 </label>
                                 <input
                                     id="lead-wa"
+                                    name="nomorWhatsapp"
                                     type="tel"
                                     required
+                                    value={leadForm.nomorWhatsapp}
+                                    onChange={handleLeadChange}
                                     className="w-full border border-gray-300 px-3 py-2 text-sm rounded-none focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-gray-900"
                                     placeholder="0812xxxxxxx"
                                 />
                             </div>
                             <div className="space-y-1">
                                 <label className="font-semibold" htmlFor="lead-program">
-                                    Program of Interest
+                                    Program yang Diminati
                                 </label>
                                 <select
                                     id="lead-program"
+                                    name="programDiminati"
                                     className="w-full border border-gray-300 px-3 py-2 text-sm bg-white rounded-none focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-gray-900"
-                                    defaultValue=""
+                                    value={leadForm.programDiminati}
+                                    onChange={handleLeadChange}
                                     required
                                 >
                                     <option value="" disabled>
@@ -1029,18 +1100,20 @@ export default function Home() {
                             </div>
                             <div className="space-y-1">
                                 <label className="font-semibold" htmlFor="lead-source">
-                                    How did you hear about us?
+                                    Dari mana Anda mengetahui UTS College?
                                 </label>
                                 <select
                                     id="lead-source"
+                                    name="sumberInformasi"
                                     className="w-full border border-gray-300 px-3 py-2 text-sm bg-white rounded-none focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-gray-900"
-                                    defaultValue=""
+                                    value={leadForm.sumberInformasi}
+                                    onChange={handleLeadChange}
                                     required
                                 >
                                     <option value="" disabled>
                                         Pilih satu
                                     </option>
-                                    <option value="tiktok">Tiktok</option>
+                                    <option value="tiktok">TikTok</option>
                                     <option value="instagram">Instagram</option>
                                     <option value="facebook">Facebook</option>
                                     <option value="teman">Teman</option>
@@ -1049,10 +1122,20 @@ export default function Home() {
                             </div>
                             <button
                                 type="submit"
+                                disabled={isSubmitting}
                                 className="mt-2 w-full bg-gray-900 text-white hover:bg-black transition-colors px-4 py-2.5 text-sm md:text-base font-semibold tracking-wide"
                             >
-                                Jadwalkan konsultasi gratis sekarang
+                                {isSubmitting ? 'Mengirim data...' : 'Jadwalkan konsultasi gratis sekarang'}
                             </button>
+                            {formStatus.message && (
+                                <p
+                                    className={`text-xs md:text-sm ${
+                                        formStatus.type === 'success' ? 'text-emerald-600' : 'text-red-600'
+                                    }`}
+                                >
+                                    {formStatus.message}
+                                </p>
+                            )}
                             <p className="text-[11px] md:text-xs text-gray-500 mt-2">
                                 Dengan mengirim data ini, Anda setuju untuk dihubungi oleh tim UTS College terkait
                                 informasi program dan konsultasi tanpa komitmen.
