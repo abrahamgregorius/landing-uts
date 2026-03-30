@@ -273,11 +273,10 @@ export default function Home() {
 
                         <div className="space-y-4 md:space-y-6">
                             <h1 className="text-3xl md:text-5xl lg:text-[3.1rem] font-extrabold tracking-tight leading-tight md:leading-tight">
-                                Jaminan jalur masuk ke Universitas Top 100 dunia.
+                                Jalur resmi persiapan kuliah ke Universitas Teknologi Terkemuka di dunia.
                             </h1>
                             <p className="text-sm md:text-lg lg:text-xl font-medium leading-relaxed text-red-50/95 max-w-xl">
-                                Jalur resmi yang dirancang khusus untuk mengubah lulusan SMA menjadi mahasiswa
-                                berprestasi di UTS, universitas teknologi terbaik di jantung kota Sydney.
+                                Melalui jalur pathway ini, lulus SMA mendapatkan dukungan akademik terstuktur untuk mempersiapkan diri melanjutkan studi di UTS, Universitas Teknologi terkemuka di Sydney & Peringkat 100 dunia (QS World University Ranking).
                             </p>
                         </div>
 
@@ -348,11 +347,11 @@ export default function Home() {
                             <div className="flex items-center gap-2 text-red-700">
                                 <GraduationCap className="w-5 h-5" aria-hidden="true" />
                                 <span className="text-xs font-semibold uppercase tracking-widest">
-                                    Jaminan Jalur Masuk
+                                    Jalur Pathway Resmi
                                 </span>
                             </div>
                             <h3 className="text-sm md:text-base font-semibold text-gray-900">
-                                Jaminan Jalur Masuk ke Universitas Top 100 Dunia
+                                Jalur Masuk ke Universitas TOP 100 Dunia (QS World Ranking 2026: UTS ranking 96 di dunia)
                             </h3>
                             <p className="text-xs md:text-sm text-gray-700 leading-relaxed">
                                 Memberikan kepastian akses langsung ke University of Technology Sydney (UTS), salah satu
@@ -369,7 +368,7 @@ export default function Home() {
                                 </span>
                             </div>
                             <h3 className="text-sm md:text-base font-semibold text-gray-900">
-                                Lulus Tepat Waktu dengan Jalur Akselerasi (Fast-Track)
+                                Lulus Studi Sesuai Rencana dengan Jalur Akselerasi (Fast-Track)
                             </h3>
                             <p className="text-xs md:text-sm text-gray-700 leading-relaxed">
                                 Program Diploma kami dirancang agar anak Anda bisa langsung melanjutkan ke tahun kedua
@@ -391,7 +390,7 @@ export default function Home() {
                             <p className="text-xs md:text-sm text-gray-700 leading-relaxed">
                                 Berbeda dengan ruang kuliah besar yang mengintimidasi, kelas kami berukuran kecil
                                 sehingga setiap anak mendapatkan perhatian penuh dari pengajar untuk memastikan mereka
-                                memahami materi dengan sempurna.py
+                                memahami materi dengan sempurna
                             </p>
                         </div>
 
@@ -420,7 +419,7 @@ export default function Home() {
                                 </span>
                             </div>
                             <h3 className="text-sm md:text-base font-semibold text-gray-900">
-                                Keamanan &amp; Kesejahteraan Prioritas Utama (Khusus Usia &lt;18 Tahun)
+                                Keamanan &amp; Kesejahteraan Prioritas Utama
                             </h3>
                             <p className="text-xs md:text-sm text-gray-700 leading-relaxed">
                                 Kami memiliki program perlindungan khusus untuk siswa di bawah umur. Mulai dari
@@ -452,7 +451,7 @@ export default function Home() {
                             Tahukah Anda?
                         </span>
                         <p className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed">
-                            <b>90%</b> lulusan diploma kami berhasil melanjutkan ke tahun kedua UTS dengan rasa percaya diri
+                            <b>Mayoritas</b> lulusan diploma kami berhasil melanjutkan ke tahun kedua UTS dengan rasa percaya diri
                             yang lebih tinggi dibandingkan siswa jalur langsung.
                         </p>
                     </div>
@@ -733,11 +732,10 @@ export default function Home() {
                                         </span>
                                     </button>
                                     <div
-                                        className={`px-5 pt-0 text-sm md:text-base text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ease-out ${
-                                            isOpen
-                                                ? 'max-h-[520px] opacity-100 pb-5'
-                                                : 'max-h-0 opacity-0 pb-0'
-                                        }`}
+                                        className={`px-5 pt-0 text-sm md:text-base text-gray-700 leading-relaxed overflow-hidden transition-all duration-300 ease-out ${isOpen
+                                            ? 'max-h-[520px] opacity-100 pb-5'
+                                            : 'max-h-0 opacity-0 pb-0'
+                                            }`}
                                     >
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 items-start">
                                             {/* Left: Text answer */}
@@ -867,15 +865,14 @@ export default function Home() {
                                 Alumni Outcome
                             </span>
                             <div className="flex flex-col md:flex-row items-center md:items-baseline justify-center gap-2 md:gap-3">
-                                <span className="text-4xl md:text-5xl font-extrabold text-gray-900">92%</span>
+                                <span className="text-4xl md:text-5xl font-extrabold text-gray-900">90,8%</span>
                                 <span className="text-sm md:text-base text-gray-700 max-w-sm">
-                                    alumni melaporkan sudah bekerja atau melanjutkan studi dalam 6 bulan setelah
-                                    lulus.
+                                    alumni sudah bekerja paruh waktu setelah lulus.
                                 </span>
                             </div>
                         </div>
                         <p className="text-[11px] md:text-xs text-gray-500 text-center max-w-md">
-                            *Angka ilustratif untuk menggambarkan outcome karier positif dari jalur persiapan UTS.
+                            *Diukur tiga tahun setelah kelulusan, mencerminkan kesiapan karier yang kuat serta tingginya permintaan terhadap lulusan UTS.
                         </p>
                     </div>
                 </div>
